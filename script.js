@@ -5,7 +5,8 @@ const photos = [
 ];
 // 이름·계좌 정보: wedding-data.csv를 구글 시트로 올리고 '웹에 게시(CSV)'한 주소를 넣어 주세요.
 // 비워 두면 같은 폴더의 wedding-data.csv를 읽습니다(로컬 미리보기용, 저장소에는 올라가지 않음).
-const DATA_URL = '';
+const DATA_URL =
+  'https://docs.google.com/spreadsheets/d/e/2PACX-1vS6-YtT08Csu11f5-dTOeQYUJ91wc8iLkU00nszEA6o-uvxZFrPbVZCXCyy9ZoZpt5fvk-Zd4wodVa9/pub?gid=0&single=true&output=csv';
 // 데이터를 불러오기 전이나 실패했을 때 쓰는 기본값
 const couple = {
   groom: { name: '신랑', short: '신랑', english: 'GROOM', initial: 'G' },
