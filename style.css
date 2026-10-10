@@ -280,8 +280,8 @@ h2 {
 }
 .date-line span {
   display: block;
-  font: 11px/2.5 'Noto Sans KR';
-  letter-spacing: 2px;
+  font: 500 15px/2.2 'Noto Sans KR';
+  letter-spacing: 0.5px;
 }
 .venue-line {
   font-size: 15px;
@@ -383,9 +383,6 @@ h2 {
   font-size: 14px;
   color: var(--ink);
   margin-top: 24px;
-}
-.outline span {
-  margin-left: 20px;
 }
 .muted {
   font-size: 14px;

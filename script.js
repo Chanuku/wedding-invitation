@@ -113,18 +113,6 @@ function renderCountdown() {
       days === 0 ? '오늘, 저희 결혼합니다.' : '함께해 주셔서 감사합니다.';
   }
 }
-$('addCalendar').onclick = () => {
-  const ics =
-    'BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Wedding Invitation//KO\r\nBEGIN:VEVENT\r\nUID:wedding-20270327@wedding\r\nDTSTAMP:20261009T000000Z\r\nDTSTART:20270327T083000Z\r\n' +
-    `SUMMARY:${couple.groom.name} ♥ ${couple.bride.name} 결혼식\r\n` +
-    'LOCATION:JW 메리어트 호텔 서울 5층 그랜드볼룸 (서울 서초구 신반포로 176)\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n';
-  const u = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
-  const a = document.createElement('a');
-  a.href = u;
-  a.download = `${couple.groom.short}-${couple.bride.short}-결혼식.ics`;
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(u), 1000);
-};
 let current = 0;
 const track = $('galleryTrack');
 photos.forEach((p, i) => {
@@ -208,29 +196,17 @@ function toast(t) {
   $('toast').classList.add('visible');
   setTimeout(() => $('toast').classList.remove('visible'), 2600);
 }
-async function copy(t) {
+async function copy(t, message = '복사했습니다') {
   try {
     await navigator.clipboard.writeText(t);
-    toast('복사했습니다');
+    toast(message);
   } catch {
     prompt('아래 내용을 복사해 주세요', t);
   }
 }
 $('copyAddress').onclick = () =>
   copy('서울 서초구 신반포로 176 JW 메리어트 호텔 서울 5층 그랜드볼룸');
-$('share').onclick = async () => {
-  try {
-    if (navigator.share)
-      await navigator.share({
-        title: document.title,
-        text: '2027년 3월 27일 오후 5시 30분 · JW 메리어트 호텔 서울 5층 그랜드볼룸',
-        url: location.href,
-      });
-    else await copy(location.href);
-  } catch (e) {
-    if (e.name !== 'AbortError') await copy(location.href);
-  }
-};
+$('share').onclick = () => copy(location.href, '링크가 복사되었습니다');
 function renderAccounts(list, container, side) {
   container.replaceChildren();
   list.forEach((acc, i) => {
