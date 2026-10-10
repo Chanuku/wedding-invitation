@@ -1,0 +1,1046 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600&display=swap');
+:root {
+  --paper: #f7f5ef;
+  --ink: #343e38;
+  --green: #52634e;
+  --line: #d9ded1;
+  --muted: #73796f;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background: #e8eae3;
+  color: var(--ink);
+  font:
+    16px/1.9 'Noto Sans KR',
+    sans-serif;
+}
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  font: inherit;
+  cursor: pointer;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #566f45;
+  outline-offset: 5px;
+}
+main {
+  max-width: 520px;
+  margin: auto;
+  background: var(--paper);
+  overflow: hidden;
+  box-shadow: 0 0 60px #2733220a;
+}
+header {
+  height: 76px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+header > a:last-child {
+  font-size: 13px;
+}
+.monogram {
+  font:
+    24px Georgia,
+    serif;
+  letter-spacing: 3px;
+}
+.monogram span {
+  font-style: italic;
+  font-size: 18px;
+  color: #9aab8f;
+}
+section {
+  text-align: center;
+  padding: 72px 30px;
+}
+.hero {
+  padding: 38px 24px 20px;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--green);
+  font-weight: 500;
+  margin: 0 0 23px;
+}
+h1,
+h2,
+h3,
+.hero-sub,
+.family,
+.date-line {
+  font-family: 'Gowun Batang', Georgia, serif;
+}
+h1 {
+  font-size: 37px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -1.5px;
+  margin: 0 0 14px;
+}
+h2 {
+  font-size: 26px;
+  line-height: 1.7;
+  font-weight: 400;
+  margin: 0 0 25px;
+  letter-spacing: -0.8px;
+}
+.hero-sub {
+  font-size: 20px;
+  margin: 0 0 24px;
+}
+.hero-sub span {
+  font-size: 13px;
+  margin: 0 13px;
+  color: var(--muted);
+}
+.stage {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 4/4.6;
+  max-width: 400px;
+  margin: auto;
+  perspective: 1200px;
+}
+.art {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 110px 110px 8px 8px;
+  background: #eeeade;
+}
+.art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s;
+  transform: scale(0.96);
+}
+.opened .art img {
+  transform: scale(1);
+}
+.box-cover {
+  position: absolute;
+  inset: 0;
+  border: 1px solid #b8c2a7;
+  border-radius: 110px 110px 8px 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    #e3e8d9 0px,
+    #e3e8d9 16px,
+    #e8ecdf 16px,
+    #e8ecdf 32px
+  );
+  color: #4c5e47;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow:
+    inset 0 0 0 9px #f0f1e6,
+    inset 0 0 0 10px #b8c2a7,
+    0 18px 30px #3d512018;
+  transform-origin: 0 50%;
+  transition:
+    transform 1.3s cubic-bezier(0.3, 0.1, 0.2, 1),
+    opacity 0.9s;
+  backface-visibility: hidden;
+}
+.box-top {
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+}
+.seal {
+  width: 116px;
+  height: 116px;
+  border: 1px solid #98aa88;
+  border-radius: 50%;
+  background: #f7f6ec;
+  display: grid;
+  place-content: center;
+  font: 30px Georgia;
+  letter-spacing: 4px;
+  box-shadow:
+    0 0 0 6px #f7f6ec,
+    0 0 0 7px #b3bfa6;
+}
+.seal i {
+  font-size: 20px;
+  margin: 6px;
+}
+.box-names {
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-top: 30px;
+}
+.box-date {
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-top: 6px;
+}
+.box-tap {
+  font-size: 12px;
+  margin-top: 28px;
+}
+.opened .box-cover {
+  transform: rotateY(-115deg);
+  opacity: 0;
+  pointer-events: none;
+}
+.bubble {
+  position: absolute;
+  z-index: 2;
+  top: 12%;
+  background: #fffefa;
+  padding: 12px 14px;
+  border-radius: 18px;
+  box-shadow: 0 5px 24px #3a442d20;
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(15px) scale(0.8);
+  transition: 0.6s;
+}
+.bubble:after {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 40%;
+  border: 10px solid transparent;
+  border-bottom: 0;
+  border-top-color: #fffefa;
+}
+.groom {
+  left: 4%;
+}
+.bride {
+  right: 3%;
+  top: 18%;
+}
+.bubble.show {
+  opacity: 1;
+  transform: none;
+}
+.bride span {
+  color: #b57971;
+}
+.hearts {
+  position: absolute;
+  bottom: 26%;
+  width: 100%;
+  font-size: 34px;
+  color: #a57066;
+  opacity: 0;
+}
+.accepted .hearts {
+  animation: floatHearts 2.2s ease-out infinite;
+}
+.accepted .art img {
+  animation: celebrate 2s ease-in-out 2;
+}
+.story-controls {
+  min-height: 76px;
+  padding-top: 13px;
+}
+.story-controls p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+}
+.story-controls button {
+  font-size: 12px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: none;
+  color: var(--green);
+  padding: 3px 10px;
+}
+.date-line {
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin: 14px 0 0;
+}
+.date-line span {
+  display: block;
+  font: 11px/2.5 'Noto Sans KR';
+  letter-spacing: 2px;
+}
+.venue-line {
+  font-size: 15px;
+  margin: 3px 0 5px;
+}
+.scroll-cue {
+  display: block;
+  font-size: 28px;
+  color: #9aab8f;
+}
+.paper {
+  background: #fffdf8;
+}
+.invitation > p:not(.eyebrow) {
+  font-family: 'Gowun Batang', serif;
+  line-height: 2.2;
+}
+.tiny-heart {
+  font-size: 27px;
+  color: #9daa8c;
+  margin: 24px;
+}
+.family {
+  border-top: 1px solid var(--line);
+  padding-top: 26px;
+  margin-top: 40px;
+  font-size: 17px;
+}
+.family p {
+  margin: 9px 0;
+}
+.family span {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 6px;
+}
+.family strong {
+  font-size: 20px;
+}
+.calendar-section > p {
+  margin: 0;
+}
+.calendar-section h2 {
+  margin-bottom: 8px;
+}
+.calendar {
+  margin: 35px 0 24px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 24px 4px;
+}
+.month {
+  font: 18px Georgia;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+.month span {
+  font-size: 13px;
+  color: var(--muted);
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px 0;
+  align-items: center;
+}
+.calendar-grid span {
+  display: grid;
+  place-content: center;
+  min-height: 38px;
+  font-size: 14px;
+}
+.calendar-grid .dow {
+  font-size: 12px;
+  color: var(--muted);
+}
+.calendar-grid .sun {
+  color: #ac7770;
+}
+.calendar-grid .chosen {
+  background: var(--green);
+  border-radius: 50%;
+  width: 38px;
+  justify-self: center;
+  color: white;
+}
+.countdown {
+  font-size: 14px;
+}
+.countdown strong {
+  color: #9e6961;
+  font-weight: 500;
+}
+.outline {
+  padding: 12px 25px;
+  background: transparent;
+  border: 1px solid #bcc5b3;
+  border-radius: 3px;
+  font-size: 14px;
+  color: var(--ink);
+  margin-top: 24px;
+}
+.outline span {
+  margin-left: 20px;
+}
+.muted {
+  font-size: 14px;
+  color: var(--muted);
+}
+.gallery-section {
+  padding-left: 0;
+  padding-right: 0;
+}
+.gallery-note {
+  margin-top: -15px;
+  margin-bottom: 24px;
+}
+.gallery {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 12px;
+  padding: 0 30px;
+  scrollbar-width: none;
+}
+.gallery::-webkit-scrollbar {
+  display: none;
+}
+.gallery button {
+  padding: 0;
+  flex: 0 0 100%;
+  border: 0;
+  background: transparent;
+  scroll-snap-align: center;
+  max-width: 100%;
+  position: relative;
+}
+.gallery img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  display: block;
+  border-radius: 130px 130px 3px 3px;
+}
+.gallery button span {
+  position: absolute;
+  bottom: 22px;
+  left: 0;
+  right: 0;
+  color: white;
+  font: 12px Georgia;
+  letter-spacing: 3px;
+}
+.gallery-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+  padding: 18px;
+}
+.gallery-controls button,
+dialog div button {
+  border: 0;
+  background: transparent;
+  font-size: 23px;
+  color: var(--ink);
+  width: 44px;
+  height: 44px;
+}
+.gallery-controls span {
+  font: 13px Georgia;
+  letter-spacing: 3px;
+}
+.sample-note {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
+}
+.location h3 {
+  font-size: 21px;
+  margin: 30px 0 10px;
+}
+.location p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+.location-card {
+  border: 1px solid var(--line);
+  padding: 30px 10px;
+  margin: 28px 0 16px;
+  background: #eaeee3;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1.7;
+  letter-spacing: 2px;
+  font: 18px/1.7 Georgia;
+}
+.location-card small {
+  font: 11px 'Noto Sans KR';
+  letter-spacing: 2px;
+}
+.venue-logo {
+  display: block;
+  width: 200px;
+  max-width: 70%;
+  height: auto;
+}
+.map-links {
+  display: flex;
+  gap: 6px;
+}
+.map-links > * {
+  flex: 1;
+  border: 1px solid var(--line);
+  background: transparent;
+  padding: 11px 2px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+.transport {
+  text-align: left;
+  border-top: 1px solid var(--line);
+  margin-top: 30px;
+  padding-top: 10px;
+}
+.transport h4 {
+  font-size: 14px;
+  margin: 20px 0 8px;
+  font-weight: 500;
+}
+.transport p {
+  color: var(--muted);
+  line-height: 1.9;
+}
+.hotel-link {
+  font-size: 12px;
+  display: inline-block;
+  margin-top: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.account .muted {
+  line-height: 1.9;
+  margin: 0 0 34px;
+}
+.account-group {
+  text-align: left;
+  margin-top: 26px;
+}
+.account-group h3 {
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--green);
+  margin: 0 0 10px;
+  padding-left: 4px;
+}
+.account-list {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ffffffb3;
+}
+.account-item + .account-item {
+  border-top: 1px solid var(--line);
+}
+.account-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 18px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  text-align: left;
+  transition: background 0.25s;
+}
+.account-toggle:hover,
+.account-item.open .account-toggle {
+  background: #eaf4fd;
+}
+.account-role {
+  min-width: 42px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.account-name {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+}
+.account-chevron {
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.35s ease;
+}
+.account-item.open .account-chevron {
+  transform: translateY(2px) rotate(-135deg);
+}
+.account-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+.account-item.open .account-panel {
+  grid-template-rows: 1fr;
+}
+.account-inner {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.35s ease,
+    padding 0.4s ease;
+}
+.account-item.open .account-inner {
+  padding: 4px 18px 16px;
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.08s;
+}
+.account-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+  padding-left: 54px;
+}
+.account-bank,
+.account-holder {
+  font-size: 12px;
+  color: var(--muted);
+}
+.account-number {
+  font:
+    15px/1.6 Georgia,
+    'Noto Sans KR',
+    sans-serif;
+  letter-spacing: 0.5px;
+}
+.account-copy {
+  flex-shrink: 0;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+  color: var(--green);
+  font-size: 12px;
+}
+.account-copy:active {
+  transform: scale(0.96);
+}
+.account-copy:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+@media (max-width: 360px) {
+  .account-info {
+    padding-left: 0;
+  }
+}
+footer {
+  text-align: center;
+  background: #e4e9dc;
+  padding: 55px 30px 35px;
+}
+footer h2 {
+  font-size: 22px;
+}
+footer p:not(.eyebrow) {
+  font-family: 'Gowun Batang';
+  font-size: 21px;
+}
+footer p span {
+  font-size: 12px;
+  color: #9d776a;
+  margin: 0 16px;
+}
+footer small {
+  display: block;
+  font: 12px Georgia;
+  letter-spacing: 3px;
+  margin-top: 40px;
+}
+dialog {
+  background: #f7f5ef;
+  border: 0;
+  padding: 50px 16px 10px;
+  width: min(96vw, 650px);
+  max-height: 95dvh;
+  border-radius: 6px;
+}
+dialog::backdrop {
+  background: #142018de;
+}
+dialog img {
+  width: 100%;
+  max-height: 73dvh;
+  object-fit: contain;
+}
+#closeLightbox {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  border: 0;
+  background: none;
+  font-size: 32px;
+  width: 44px;
+}
+dialog div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+#lightCounter {
+  font-size: 13px;
+}
+#toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 20px;
+  border-radius: 30px;
+  background: #344330;
+  color: #fff;
+  font-size: 13px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 20;
+  white-space: nowrap;
+}
+#toast.visible {
+  opacity: 1;
+}
+@keyframes floatHearts {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+@keyframes celebrate {
+  50% {
+    transform: scale(1.04) rotate(1deg);
+  }
+}
+@media (max-width: 360px) {
+  section {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  .bubble {
+    font-size: 13px;
+    padding: 9px;
+  }
+  .family {
+    font-size: 15px;
+  }
+  .box-tap {
+    font-size: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Toy-room sky palette and a clear invitation to open the box. */
+:root {
+  --paper: #f2f9ff;
+  --ink: #263f60;
+  --green: #285d94;
+  --line: #c8dced;
+  --muted: #5b7189;
+}
+body {
+  background: #78bce8 url('assets/clouds.png') repeat;
+  background-size: 560px auto;
+  background-attachment: fixed;
+  animation: cloudDrift 24s ease-in-out infinite alternate;
+  padding: 28px 16px;
+}
+main {
+  background: #fffdf7;
+  border: 1px solid #ffffffde;
+  border-radius: 14px;
+  box-shadow: 0 12px 50px #17477524;
+}
+header {
+  background: #fffdf7;
+  border-bottom-color: #e6e5db;
+}
+.monogram span {
+  color: #4388c0;
+}
+.hero {
+  background: #fffdf7;
+}
+.hero > .eyebrow,
+.hero > h1,
+.hero > .hero-sub,
+.hero > .date-line,
+.hero > .venue-line {
+  color: #153f6d;
+  text-shadow: 0 1px 4px #ffffffb0;
+}
+.hero-sub span {
+  color: #315d85;
+}
+.hero h1 {
+  font-weight: 700;
+}
+.box-cover {
+  border-color: #4c84ad;
+  background: repeating-linear-gradient(
+    90deg,
+    #dceefb 0px,
+    #dceefb 16px,
+    #eaf6ff 16px,
+    #eaf6ff 32px
+  );
+  color: #285d94;
+  box-shadow:
+    inset 0 0 0 9px #f4faff,
+    inset 0 0 0 10px #96bddb,
+    0 18px 30px #1c548a26;
+}
+.seal {
+  border-color: #91b8d5;
+  background: #fffdf1;
+  box-shadow:
+    0 0 0 6px #fffdf1,
+    0 0 0 7px #a7c6dd;
+}
+.box-top {
+  margin-bottom: 20px;
+}
+.box-names {
+  margin-top: 24px;
+}
+.box-date {
+  margin-top: 3px;
+}
+.box-tap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 23px;
+  padding: 10px 23px;
+  background: #ffda53;
+  color: #244d78;
+  border: 2px solid #fff4bd;
+  border-radius: 40px;
+  box-shadow:
+    0 5px 0 #d69c33,
+    0 8px 18px #294f7630;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  animation: tapInvite 1.8s ease-in-out 3;
+}
+.box-tap > span {
+  font-size: 24px;
+  line-height: 1;
+}
+.box-hint {
+  font-size: 12px;
+  margin-top: 14px;
+  color: #436584;
+}
+.box-cover:hover .box-tap {
+  background: #ffe780;
+  transform: translateY(-2px);
+}
+.box-cover:focus-visible {
+  outline: 4px solid #ffcd38;
+  outline-offset: 6px;
+}
+.story-controls p {
+  display: inline-block;
+  background: #ffffffed;
+  padding: 4px 12px;
+  border-radius: 20px;
+  color: #31587c;
+  max-width: 100%;
+}
+.story-controls button {
+  background: #fff9e6;
+  border-color: #ddbd6a;
+  color: #31587c;
+  border-radius: 20px;
+  margin-top: 5px;
+  padding: 4px 14px;
+}
+.scroll-cue {
+  color: #285d94;
+}
+.paper {
+  background: #fffdf7;
+}
+.tiny-heart {
+  color: #729fca;
+}
+.calendar-section {
+  background: #f8f5ec;
+}
+.location-card {
+  background: #dcefff;
+}
+.countdown strong {
+  color: #a55638;
+}
+footer {
+  background: #f8f5ec;
+}
+footer h2,
+footer p {
+  text-shadow: 0 1px 4px #ffffffc0;
+}
+footer .outline {
+  background: #fffdf2;
+  border-color: #adc5d8;
+}
+footer .eyebrow {
+  color: #244d78;
+}
+@keyframes tapInvite {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+    box-shadow:
+      0 7px 0 #d69c33,
+      0 12px 20px #294f7628;
+  }
+}
+@media (max-width: 360px) {
+  .box-top {
+    margin-bottom: 15px;
+  }
+  .box-names {
+    margin-top: 18px;
+  }
+  .box-tap {
+    font-size: 16px;
+    margin-top: 14px;
+    padding: 8px 18px;
+  }
+  .box-hint {
+    font-size: 11px;
+    margin-top: 10px;
+  }
+  .seal {
+    width: 100px;
+    height: 100px;
+  }
+  .story-controls p {
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .box-tap {
+    animation: none;
+  }
+}
+
+/* Clouds stay outside the light stationery, including on phones. */
+@keyframes cloudDrift {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 22px -12px;
+  }
+  100% {
+    background-position: 46px 5px;
+  }
+}
+@media (max-width: 420px) {
+  body {
+    padding: 20px 12px;
+  }
+  .hero {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .stage {
+    min-height: 355px;
+  }
+  .box-tap {
+    font-size: 16px;
+    padding: 9px 19px;
+  }
+  .family {
+    font-size: 15px;
+  }
+  .family span {
+    margin: 0 3px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+}
+
+/* The initials fit on narrow phones; the countdown stays inside the CTA. */
+.seal {
+  font-size: 26px;
+  letter-spacing: 2px;
+}
+.monogram {
+  letter-spacing: 1px;
+}
+.box-tap .countdown-badge {
+  display: inline-grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  flex: 0 0 29px;
+  background: #244d78;
+  color: #fffdf1;
+  border-radius: 50%;
+  font:
+    700 17px/1 'Noto Sans KR',
+    sans-serif;
+  font-variant-numeric: tabular-nums;
+}
